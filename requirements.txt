@@ -1,0 +1,7 @@
+torch==2.3.0
+xformers
+peft
+transformers
+trl
+bitsandbytes
+openpyxl
