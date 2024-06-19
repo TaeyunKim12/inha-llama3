@@ -1,6 +1,8 @@
 # inha-llama3
 인하대병원 Llama3 학습 코드입니다.
 
+환경 셋팅은 드린 첨부된 Dockerfile과 requirments.txt 파일을 이용하여 build하시면 될 것 같습니다.
+
 ## Train Data prepare
 ```json
 {"output": "...", "input": "...", "instruction": "..."}
