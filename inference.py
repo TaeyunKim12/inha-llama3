@@ -6,7 +6,7 @@ import argparse
 argments = argparse.ArgumentParser()
 argments.add_argument("--inference_data", type=str, default=None)
 argments.add_argument("--model_path", type=str, default=None)
-argments.add_argument("--save_name", type=str, default=None)
+argments.add_argument("--save_name", type=str, default="result")
 
 
 def inference(csv_path: str, model_path: str, save_name: str):
@@ -27,6 +27,7 @@ def inference(csv_path: str, model_path: str, save_name: str):
 
     ### Instruction:
     {}
+    breakpoint()
 
     ### Input:
     {}
