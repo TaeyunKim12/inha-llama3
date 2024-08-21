@@ -2,7 +2,7 @@ dalpha
 torch==2.3.0
 xformers
 peft
-transformers
-trl
+transformers == 0.0.26
+trl == 0.8.6
 bitsandbytes
 openpyxl
