@@ -48,10 +48,8 @@ WORKDIR /workspace
 # install python packages
 ADD requirements.txt /workspace/
 RUN pip install --index-url https://download.pytorch.org/whl/cu118 --extra-index-url https://pypi.org/simple -r requirements.txt
-RUN pip install "unsloth[cu118-torch230] @ git+https://github.com/unslothai/unsloth.git"
 RUN apt-get update
 RUN apt-get install python3.10-dev -y
-
 # install apt packages
 
 COPY . /workspace
