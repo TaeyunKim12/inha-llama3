@@ -1,7 +1,6 @@
 import pandas as pd
-import textwrap
-from unsloth import FastLanguageModel
 import argparse
+from model.model import LlamaInha
 
 argments = argparse.ArgumentParser()
 argments.add_argument("--inference_data", type=str, default=None)
@@ -15,47 +14,15 @@ def inference(csv_path: str, model_path: str, save_name: str):
 
     result_df = []
 
-    model, tokenizer = FastLanguageModel.from_pretrained(
-        model_name=model_path,  # YOUR MODEL YOU USED FOR TRAINING
-        max_seq_length=1024,
-        dtype=None,
-        load_in_4bit=True,
-    )
-    FastLanguageModel.for_inference(model)  # Enable native 2x faster inference
-
-    alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
-
-    ### Instruction:
-    {}
-    breakpoint()
-
-    ### Input:
-    {}
-
-    ### Response:
-    {}"""
-
+    llama = LlamaInha(model_path=model_path)
     for _, row in rectum_val.iterrows():
-        rectum = rectum_val["Conclusion"]
-        system_prompt = rectum_val["SystemPrompt"]
-        inputs = tokenizer(
-            [
-                alpaca_prompt.format(
-                    f"{system_prompt}",
-                    f"{rectum}",  # input
-                    "",  # output - leave this blank for generation!
-                )
-            ],
-            return_tensors="pt",
-        ).to("cuda")
-        outputs = model.generate(**inputs, max_new_tokens=1024, use_cache=True)
-        # print(tokenizer.batch_decode(outputs)[0].split("### Response:")[1])
+        input = row["Conclusion"]
+        system_prompt = row["SystemPrompt"]
+        output = llama.run(input, system_prompt, logging=False)
         result_df.append(
             {
-                "Conclusion": rectum,
-                "Findings": str(
-                    tokenizer.batch_decode(outputs)[0].split("### Response:")[1].replace("<|end_of_text|>", "")
-                ),
+                "Conclusion": input,
+                "Findings": output,
             }
         )
 

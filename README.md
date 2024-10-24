@@ -40,31 +40,6 @@ Args로 값을 따로 지정하지 않으면 default 값으로 넘어갑니다.
 8. `--save_steps` (int) : step을 몇 번 돌았을 때 모델을 저장할지에 대한 값입니다. default는 50입니다.
 
 
-## Inference Data Prepare
-| Conclusion | SystemPrompt | 
-|----------|----------|
-| ...   | ...   | 
-| ...   | ...   | 
-
-[test_sample.xlsx](samples/test_sample.xlsx)를 참고하시면 됩니다.
-
-해당 파일의 형식(column)이 동일해야 합니다.
-
-여기서 SystemPrompt는 Train data의 instruction과 동일한 개념입니다.
-
-## How To Inference
-아래의 명령어를 통해 추론이 가능합니다.
-```
-python3 inference.py --inference_data ./samples/test_sample.xlsx --model_path ./output/checkpoint-10 --save_name test
-```
-
-#### Inference Args 설명
-Args로 값을 따로 지정하지 않으면 default 값으로 넘어갑니다.
-
-1. `--inference_data`(str) : inference 할 데이터셋 파일의 경로입니다. 
-2. `--model_path` (str) : 학습한 모델의 경로입니다. 해당 경로에 있는 .pt로 추론이 됩니다.
-3. `--save_name` (str) : 결과를 저장할 파일의 이름입니다. xlsx로 저장됩니다.
-
 ## DPO Data prepare
 ```json
 {"prompt": "...", "chosen": "...", "rejected" :"..."}
@@ -100,3 +75,32 @@ Args로 값을 따로 지정하지 않으면 default 값으로 넘어갑니다.
 6. `--max_seq_length` (int) : model이 생성할 최대 output sequence length입니다. default는 1024입니다. 최대 길이기 때문에 키운다고 해서 output findings이 무조건 길어지지는 않습니다.
 7. `--num_train_epocs` (int) : 학습할 epoch의 수 입니다. 1 epoch = train data를 전부 1번 봅니다. default는 3입니다.
 8. `--save_steps` (int) : step을 몇 번 돌았을 때 모델을 저장할지에 대한 값입니다. default는 50입니다.
+
+## Inference Data Prepare
+| Conclusion | SystemPrompt | 
+|----------|----------|
+| ...   | ...   | 
+| ...   | ...   | 
+
+[test_sample.xlsx](samples/test_sample.xlsx)를 참고하시면 됩니다.
+
+해당 파일의 형식(column)이 동일해야 합니다.
+
+여기서 SystemPrompt는 Train data의 instruction과 동일한 개념입니다.
+
+## How To Inference
+아래의 명령어를 통해 추론이 가능합니다.
+```
+python3 inference.py --inference_data ./samples/test_sample.xlsx --model_path ./output/checkpoint-10 --save_name test
+```
+
+#### Inference Args 설명
+Args로 값을 따로 지정하지 않으면 default 값으로 넘어갑니다.
+
+1. `--inference_data`(str) : inference 할 데이터셋 파일의 경로입니다. 
+2. `--model_path` (str) : 학습한 모델의 경로입니다. 해당 경로에 있는 .pt로 추론이 됩니다.
+3. `--save_name` (str) : 결과를 저장할 파일의 이름입니다. xlsx로 저장됩니다.
+
+
+
+
