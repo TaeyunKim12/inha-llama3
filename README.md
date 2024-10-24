@@ -101,6 +101,11 @@ Args로 값을 따로 지정하지 않으면 default 값으로 넘어갑니다.
 2. `--model_path` (str) : 학습한 모델의 경로입니다. 해당 경로에 있는 .pt로 추론이 됩니다.
 3. `--save_name` (str) : 결과를 저장할 파일의 이름입니다. xlsx로 저장됩니다.
 
-
+## 단일 Text Inference 방법
+아래의 명령어를 통해 추론이 가능합니다.
+파일 내부의 모델 경로, input, system prompt는 직접 수정하셔야 정상적으로 작동합니다.
+```
+python3 inference_by_text.py
+```
 
 
