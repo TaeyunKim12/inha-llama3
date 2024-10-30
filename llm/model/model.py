@@ -44,11 +44,10 @@ class LlamaInha:
             print("=====================")
         input = self.tokenizer([prompt], return_tensors="pt").to("cuda")
 
-        output_tokens = self.model.generate(**input, max_new_tokens=self.max_seq_length, use_cache=True)
+        output_tokens = self.model.generate(
+            **input, max_new_tokens=self.max_seq_length, use_cache=True, num_return_sequences=1
+        )
+
         output = str(self.tokenizer.batch_decode(output_tokens)[0]).replace("<|end_of_text|>", "")
-        if logging:
-            print("=====================")
-            print(f"Output: {output}")
-            print("=====================")
 
         return output

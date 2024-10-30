@@ -1,0 +1,28 @@
+[
+    {
+        "messages": [
+            {
+                "content": [
+                    {
+                        "text": "Describe Image",
+                        "type": "text"
+                    },
+                    {
+                        "image": "./image/test.jpg",
+                        "type": "image" 
+                    }
+                ],
+                "role": "user"
+            },
+            {
+                "content": [
+                    {
+                        "text": "lamma",
+                        "type": "text"
+                    }
+                ],
+                "role": "assistant"
+            }
+        ]
+    }
+]

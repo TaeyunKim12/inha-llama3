@@ -6,3 +6,4 @@ trl == 0.8.6
 openpyxl
 bitsandbytes==0.42.0
 unsloth==2024.08
+pillow
